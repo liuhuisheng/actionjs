@@ -1,0 +1,36 @@
+{
+  "name": "action",
+  "version": "1.0.0",
+  "description": "actionjs",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "^1.2.0",
+    "gulp": "~3.9.1",
+    "gulp-js-prettify": "^0.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-strip-comments": "^2.4.3",
+    "gulp-uglify": "~2.0.0",
+    "rollup": "^0.34.9",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-commonjs": "^3.3.1",
+    "rollup-plugin-json": "^2.0.1",
+    "rollup-plugin-node-resolve": "^2.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:huisheng.lhs/actionjs.git"
+  },
+  "author": "huisheng.lhs",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "http://registry.npm.alibaba-inc.com"
+  },
+  "apm": {
+    "build": false,
+    "publishFolder": "dist"
+  }
+}

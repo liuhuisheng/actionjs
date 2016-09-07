@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>engine</title>
+  <style type="text/css" media="screen">
+
+  </style>
+</head>
+
+<body scope="search">
+  <!--<div action.tag ="sidebar" 
+       action.validate="email"
+       action.toggle="test"
+       action.void = "test"
+       action.extend.test=""
+
+       data.value="form.key1"
+       data.list="ds.sex"></div>-->
+
+  <div action.tag="sidebar" data.value='form.key1' data.test="form.key2" data-abc="123" validate='email,min[0]' style="height:50px;background: gray;"></div>
+  <div action.tag="select"  data.list='ds.sex' data.value="form.key3"></div>
+
+
+  <button action="event" data.click="testClick">test</button>
+  
+  
+  <script src="../dist/action.js"></script>
+ 
+  <script type="text/javascript">
+ 
+// app.action('tag',Tag)
+// app.action('tag.tab',Tabbar);
+// app.action('tag.sidbar',Sidebar)
+
+
+    function Sidebar(){     
+ 
+      this.template = function(){        //bind.0   data->render //bind.1   data=>render
+        return 'i am sidebar {{value}}';          //bind.2   data<=>render
+      };
+      this.init = function(){
+        var _this = this;
+        var element = this.element;
+        var index = 0;
+        addEvent(element,'click',function(){
+          _this.data.value = index++;
+        });
+
+        this.watch('value',function(){
+          _this.render();
+        });
+      };
+    }
+
+    function Select(){
+      this.template = function(){
+        return '<input type="text" value={{value}} /><input type="text" value={{value}} /><select>{{each list as o}}<option {{if o==value}}selected{{/if}} value="{{o}}">{{o}}</option>{{/each}}</select>';
+      };
+      this.init = function(){
+        var that = this;
+        this.watch('value',function(value){
+          var a = 1;
+          that.element.querySelector('input').value = value;
+          var input = that.element.querySelectorAll('input[type="text"]');
+          input[0].value = value;
+          input[1].value = value;
+
+          var select = that.element.querySelector('select');
+          var option = select.querySelector('option[value="'+value+'"]');
+          if (option){
+            select.selectedIndex = option.index;
+          }
+        });
+
+        var i=0;
+        this.listen('input,select',function(){
+          console.log(i++);
+          that.data.value =  (this.type=='checkbox')?this.checked:this.value;
+        });
+      };
+    }
+ 
+ 
+    //tag0 tag1 tag2
+    function Page(){
+      this.ds={sex:['male','female','xxx']},
+      this.form = {
+        key1:'value22221',
+        key2:'value2',
+        key3:'xxx'
+      };
+      //this.value = 'page1value';
+      this.list = ['a','b','c'];
+  
+      var _this = this;
+      // setTimeout(function(){
+      //   _this.form.key3 = 'male';
+      // },3000);
+
+
+      this.testClick = function(){
+        _this.form.key3="female";
+        //_this.ds.sex.unshift('男');
+      };
+
+      this.testClick2 = function(){
+        _this.form.key3="male";
+      };
+ 
+    }
+ 
+    //注册  启动
+    app.action('select.tag',Select);
+    app.action('sidebar.tag',Sidebar);
+    app.scope('search', Page);
+    app.run();
+  
+  function addEvent(elm, evType, fn, useCapture) {  
+    if (elm.addEventListener) {  
+      elm.addEventListener(evType, fn, useCapture);//DOM2.0  
+      return true;  
+    } else if (elm.attachEvent) {  
+      var r = elm.attachEvent('on' + evType, fn);//IE
+      return r;  
+    }
+  }
+</script>
+</body>
+
+</html>

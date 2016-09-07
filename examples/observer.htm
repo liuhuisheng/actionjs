@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>observer</title>
+  <!--<script  src="../src/ie8.js" type="text/javascript" ></script>-->
+  <script  src="../dist/action.js" type="text/javascript" ></script>
+</head>
+<body>
+
+<script type="text/javascript" >
+  // var a = ('__defineGetter__' in {});
+  // alert(a);
+   
+  // ob = new Objserver(data);
+  // watch = new Watcher(ob,'a.b.x');
+  // ob.subscribe('a.b.x',function(value,origin){
+  //   var 
+  // });
+
+  testOb();
+
+  function testOb(){
+ 
+    var data = {a:'test',b:{x:{y:123}},c:[1,2,3,4,5]};
+    var test = new Observer(data);
+    // test.watch('a',function(){
+    //   alert('a');
+    // });
+
+    // test.watch('b',function(){
+    //   alert('b');
+    // });
+
+    // test.watch('b.x',function(){
+    //   alert('b.x');
+    // });
+
+    // test.watch('b.x.y',function(){
+    //   alert('b.x.y');
+    // });
+
+    // //var bb = data.$value;
+    // data.b.x.y = '111';
+    // data.b.x.y = '222';
+
+    //data.form = {};
+
+    // test.watch('b.x.y',function(value,origin){
+    //   var data = {name:'b.x.y',value:value,origin:origin};
+    //   alert(JSON.stringify(data));
+    // });
+
+    // test.watch('b.x',function(value,origin){
+    //   var data = {name:'b.x',value:value,origin:origin};
+    //   alert(JSON.stringify(data));
+    // },{deep:true});
+
+    // var ob_b = data.b.__ob__;
+
+    // ob_b.watch('x',function(value,origin){
+    //   var data = {name:'x',value:value,origin:origin};
+    //   alert(JSON.stringify(data));
+    // });
+
+    // var id = ob_b.watch('x.y',function(value,origin){
+    //   var data = {name:'x.y',value:value,origin:origin};
+    //   alert(JSON.stringify(data));
+    // });
+
+    // data.$watch('b.x',function(value,origin){
+    //   var data = {name:'b.x',value:value,origin:origin};
+    //   alert(JSON.stringify(data));
+    // });
+
+    //ob_b.unwatch(id);
+// setTimeout(function(){
+//   data.b.x = 123;
+// },1000);
+   
+    //data.b.x.y = 12345;
+    //data.b.x.y = 222;
+    test.watch('a',function(){
+      alert('a');
+    });
+    // test.watch('c',function(){
+    //   alert('c');
+    // });
+    // test.watch('c[1][2]',function(){
+    //   alert('c1');
+    // });
+
+    data.a = 123456;
+    
+    // data.c.push(6);
+
+    // data.c[1] = 999;
+
+    //data.c[1] = 123;
+
+  }
+
+//data.c[1] = 123;
+
+// var i=0;
+// setInterval(function(){
+//     data.b.x.y = i++;
+// },3000);
+
+
+ //  data.b.x = {y:{z:1234}};
+
+  //  data.b.x.y.z = 'xx2';
+
+  // data.b.x.y.z = 456;
+
+  // test.watch('d',function(value,origin){
+  //   var data = {name:'d.x.y',value:value,origin:origin,target:this};
+  //   alert(JSON.stringify(data));
+  // });
+
+  // data.d = {x:{y:1}};
+  // data.b.x.aaa = 1;
+
+  // test.watch('c[2]',function(value,origin){
+  //   var data = {name:'c.2',value:value,origin:origin,target:this};
+  //   alert(JSON.stringify(data));
+  // });
+
+  // test.watch('c[1]',function(value,origin){
+  //   var data = {name:'c.1',value:value,origin:origin,target:this};
+  //   alert(JSON.stringify(data));
+  // });
+
+  // test.watch('c',function(value,origin){
+  //   var data = {name:'c',value:value,origin:origin,target:this};
+  //   alert(JSON.stringify(data));
+  // });
+
+  // data.c.push(123);
+  // data.c.splice(0,2);
+
+
+  // var watch = new Watcher(test, 'a.b.x',function(){
+
+  // });
+
+  // test.watch('b',function(value,origin){
+  //   alert(1);
+  // },{deep:true});
+  // test.watch('b',function(){alert('b');});
+  // test.watch('b.x',function(){
+  //   console.log(arguments);
+  //   alert('b.x');
+  // });
+
+  // test.watch('c',function(){
+  //   alert('c');
+  // });
+
+  // data.c.push(12);
+
+
+  // data.b.x = 123;
+  //data.b={x:{y:{z:{a:{b:{c:{d:{k:123}}}}}}}};
+  //data.b = {x:2};
+  //data.b.x =3;
+  // data.c[2]=7;
+  // data.c.splice(1,1); //1,3,4
+  // data.c[2]=9;
+
+  //a.b.x
+
+  // test.watch('path',function() {
+    
+  // })
+</script>
+
+</body>
+</html>
